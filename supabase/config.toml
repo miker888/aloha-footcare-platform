@@ -1,0 +1,19 @@
+# Supabase CLI settings for this project. Link it to the live project with
+#   supabase link --project-ref <project-ref>
+project_id = "aloha-footcare-platform"
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+# These functions check who is calling in their own code (the public booking
+# form has no session; the webhook is signed by Stripe; refunds check the
+# signed-in admin). The platform JWT check doesn't understand the new API keys.
+[functions.create-booking]
+verify_jwt = false
+
+[functions.stripe-webhook]
+verify_jwt = false
+
+[functions.refund-payment]
+verify_jwt = false

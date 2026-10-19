@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  /* Beach palette: dry sand ground, shell surfaces, clay for action, kelp for
+     "all set". Every text colour here passes WCAG AA on sand and shell. */
+  --color-sand: #f5eddf;
+  --color-shell: #fbf7f0;
+  --color-dune: #e7d7bf;
+  --color-dune-deep: #d9c4a5;
+  --color-clay: #9a4426;
+  --color-clay-deep: #7c3419;
+  --color-blush: #f4ddd0;
+  --color-ink: #2b221d;
+  --color-drift: #5e5047;
+  --color-kelp: #2f5a4a;
+  --color-sea: #dce7df;
+  --color-alert: #8f2a1d;
+
+  --font-display: var(--font-young-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-atkinson), ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding-inline: clamp(16px, 4vw, 40px);
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-sand);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Public pages are read by many older eyes: a larger base size. */
+.public {
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+
+.admin {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-clay);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-blush);
+}
+
+/* The one moment of motion: the sand ripples draw in once on load. */
+@keyframes ripple-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.ripple-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: ripple-draw 1.8s cubic-bezier(0.3, 0.6, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ripple-line {
+    animation: none;
+  }
+}
+
+/* Native date inputs: keep them readable and tall enough to tap. */
+input[type="date"],
+input[type="time"] {
+  min-height: 3rem;
+}
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+}
