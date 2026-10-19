@@ -14,7 +14,7 @@ export function Confirmation() {
   return (
     <div className="max-w-2xl">
       {demo && (
-        <p className="mb-6 inline-block rounded-full bg-blush px-4 py-1.5 text-[1rem] font-semibold text-clay-deep">
+        <p className="mb-6 inline-block rounded-full bg-gold-wash px-4 py-1.5 text-[1rem] font-semibold text-gold-deep">
           Demo mode: no card was charged
         </p>
       )}
@@ -30,7 +30,7 @@ export function Confirmation() {
       <ol className="mt-6 space-y-6">
         {steps.slice(1).map((s, i) => (
           <li key={s.title} className="flex gap-4">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-clay font-display text-[1.2rem] text-clay">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-gold font-display text-[1.2rem] text-gold-deep">
               {i + 1}
             </span>
             <span>
@@ -43,12 +43,12 @@ export function Confirmation() {
 
       <p className="mt-12 text-drift">
         Need to change something? Call us at{" "}
-        <a href={site.phone.href} className="font-semibold text-clay underline underline-offset-4">
+        <a href={site.phone.href} className="font-semibold text-palm underline underline-offset-4">
           {site.phone.display}
         </a>
         {ref ? ` and mention ${ref}.` : "."}
       </p>
-      <Link href="/" className="mt-8 inline-flex h-14 items-center rounded-full border-2 border-clay px-8 text-[1.1rem] font-semibold text-clay hover:bg-shell">
+      <Link href="/" className="mt-8 inline-flex h-14 items-center rounded-full border-2 border-palm px-8 text-[1.1rem] font-semibold text-palm hover:bg-shell">
         Back to the home page
       </Link>
     </div>

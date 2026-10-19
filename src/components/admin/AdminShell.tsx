@@ -142,7 +142,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           <div className="admin min-h-screen">
             <div className="mx-auto max-w-3xl px-4 py-8">
               <div className="mb-6 flex items-center justify-between">
-                <Link href="/admin/" className="font-semibold text-clay underline-offset-4 hover:underline">
+                <Link href="/admin/" className="font-semibold text-palm underline-offset-4 hover:underline">
                   Back
                 </Link>
                 <Button variant="quiet" onClick={signOut}>
@@ -189,8 +189,8 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <div className="admin min-h-screen lg:grid lg:grid-cols-[240px_1fr]">
         <aside className="border-b border-dune bg-shell lg:sticky lg:top-0 lg:h-screen lg:border-b-0 lg:border-r">
           <div className="flex h-16 items-center justify-between px-4 lg:h-20 lg:px-5">
-            <Link href={staff.role === "admin" ? "/admin/" : "/admin/visits/"} className="flex items-center gap-2 text-clay">
-              <PalmMark className="h-8 w-8" />
+            <Link href={staff.role === "admin" ? "/admin/" : "/admin/visits/"} className="flex items-center gap-2 text-palm">
+              <PalmMark className="h-10 w-auto" />
               <span className="leading-tight">
                 <span className="block font-display text-[1.25rem] text-ink">Aloha</span>
                 <span className="block text-[0.8rem] font-semibold text-drift">Staff</span>
@@ -218,7 +218,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     aria-current={isActive(item.href) ? "page" : undefined}
-                    className={`block rounded-lg px-3 py-2.5 font-semibold ${isActive(item.href) ? "bg-blush text-clay-deep" : "text-ink hover:bg-sand"}`}
+                    className={`block rounded-lg px-3 py-2.5 font-semibold ${isActive(item.href) ? "bg-leaf text-palm-deep" : "text-ink hover:bg-sand"}`}
                   >
                     {item.label}
                   </Link>
@@ -232,7 +232,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               <Link
                 href="/admin/account/"
                 onClick={() => setMenuOpen(false)}
-                className={`mt-1 block rounded-lg px-3 py-2 font-semibold ${isActive("/admin/account/") ? "bg-blush text-clay-deep" : "text-ink hover:bg-sand"}`}
+                className={`mt-1 block rounded-lg px-3 py-2 font-semibold ${isActive("/admin/account/") ? "bg-leaf text-palm-deep" : "text-ink hover:bg-sand"}`}
               >
                 Your account
               </Link>

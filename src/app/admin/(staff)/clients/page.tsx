@@ -65,7 +65,7 @@ function Clients() {
                 {rows.map((r) => (
                   <tr key={r.id} className="hover:bg-sand/60">
                     <td className="px-4 py-2.5">
-                      <Link href={`/admin/client/?id=${r.id}`} className="font-semibold text-clay underline-offset-4 hover:underline">
+                      <Link href={`/admin/client/?id=${r.id}`} className="font-semibold text-palm underline-offset-4 hover:underline">
                         {r.last_name}, {r.first_name}
                       </Link>
                       {r.contact_name && <span className="block text-[0.85rem] text-drift">Contact: {r.contact_name}</span>}

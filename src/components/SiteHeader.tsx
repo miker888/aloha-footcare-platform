@@ -5,26 +5,26 @@ import { site } from "@/lib/site";
 export function SiteHeader({ minimal = false }: { minimal?: boolean }) {
   return (
     <header className="border-b border-dune bg-sand/95 backdrop-blur supports-[backdrop-filter]:bg-sand/80 sticky top-0 z-30">
-      <div className="wrap flex h-20 items-center justify-between gap-4">
-        <Link href="/" className="rounded-md" aria-label={`${site.name}, home`}>
-          <Logo />
+      <div className="wrap flex h-20 items-center justify-between gap-4 sm:h-[104px]">
+        <Link href="/" className="shrink-0 rounded-md" aria-label={`${site.name}, home`}>
+          <Logo alt="" className="h-16 w-auto sm:h-[88px]" />
         </Link>
 
         <nav aria-label="Main" className="flex items-center gap-1 sm:gap-2">
           {!minimal && (
             <ul className="mr-2 hidden items-center gap-1 lg:flex">
               <li>
-                <Link href="/#treat" className="rounded-md px-3 py-2 text-[1.05rem] text-ink hover:text-clay">
+                <Link href="/#treat" className="rounded-md px-3 py-2 text-[1.05rem] text-ink hover:text-palm">
                   What we treat
                 </Link>
               </li>
               <li>
-                <Link href="/#how" className="rounded-md px-3 py-2 text-[1.05rem] text-ink hover:text-clay">
+                <Link href="/#how" className="rounded-md px-3 py-2 text-[1.05rem] text-ink hover:text-palm">
                   How it works
                 </Link>
               </li>
               <li>
-                <Link href="/#residences" className="rounded-md px-3 py-2 text-[1.05rem] text-ink hover:text-clay">
+                <Link href="/#residences" className="rounded-md px-3 py-2 text-[1.05rem] text-ink hover:text-palm">
                   Residences
                 </Link>
               </li>
@@ -32,7 +32,7 @@ export function SiteHeader({ minimal = false }: { minimal?: boolean }) {
           )}
           <a
             href={site.phone.href}
-            className="hidden rounded-md px-3 py-2 text-[1.05rem] font-semibold text-ink hover:text-clay sm:inline-block"
+            className="hidden rounded-md px-3 py-2 text-[1.05rem] font-semibold text-ink hover:text-palm sm:inline-block"
           >
             {site.phone.display}
           </a>
@@ -51,7 +51,7 @@ export function SiteHeader({ minimal = false }: { minimal?: boolean }) {
           {!minimal && (
             <Link
               href="/book/"
-              className="inline-flex h-12 items-center whitespace-nowrap rounded-full bg-clay px-4 text-[1.05rem] font-semibold text-shell hover:bg-clay-deep sm:px-5"
+              className="inline-flex h-12 items-center whitespace-nowrap rounded-full bg-palm px-4 text-[1.05rem] font-semibold text-shell hover:bg-palm-deep sm:px-5"
             >
               Book a visit
             </Link>

@@ -165,7 +165,7 @@ function Payments() {
                           <td className="px-4 py-2 sm:px-5">{dateTime(r.occurred_at)}</td>
                           <td className="px-4 py-2">
                             {r.booking_id ? (
-                              <Link href={`/admin/booking/?id=${r.booking_id}`} className="font-semibold text-clay underline-offset-4 hover:underline">
+                              <Link href={`/admin/booking/?id=${r.booking_id}`} className="font-semibold text-palm underline-offset-4 hover:underline">
                                 {r.reference}
                               </Link>
                             ) : (

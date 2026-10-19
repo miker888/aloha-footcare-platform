@@ -5,7 +5,8 @@ Replaces the Wix site and Vagaro.
 
 What it does today:
 
-- **Public site**: redesigned homepage, services with live prices, privacy notice.
+- **Public site**: redesigned homepage in the logo's palm green and gold on sand, services with live prices,
+  privacy notice.
 - **Online booking**: a 4-step request form for seniors and their families. The server prices it from the
   catalog, payment holds the request (Stripe, or demo mode until Stripe is connected), and it lands in the
   dispatch queue.
@@ -133,7 +134,7 @@ to `supabase/tests/security_and_booking.sql`, and keep `src/lib/types.ts` in ste
 | `src/app/privacy/` | Collection notice (draft, needs the clinic's privacy officer) |
 | `src/app/admin/(staff)/` | Staff screens: dispatch, booking, new booking, clients, nurses, catalog, payments, settings, account, my visits |
 | `src/lib/site.ts` | Business details and homepage copy |
-| `src/components/Logo.tsx` | Stand-in palm mark. Swap in the clinic's logo file here |
+| `src/assets/` | The clinic's logo and the palm cut from it. `src/app/icon.png`, `apple-icon.png` and `opengraph-image.png` are made from the same artwork |
 | `supabase/migrations/` | Tables, security rules, booking functions |
 | `supabase/functions/` | create-booking, stripe-webhook, refund-payment |
 | `supabase/tests/` | Database tests |
@@ -146,7 +147,7 @@ to `supabase/tests/security_and_booking.sql`, and keep `src/lib/types.ts` in ste
 - [ ] Sign-ups off, "Require two-step sign-in" on in Settings, every staff member enrolled
 - [ ] Stripe live keys and webhook; receipts on
 - [ ] Privacy notice completed (privacy officer, retention period) and reviewed
-- [ ] Real logo, prices, products and travel charges entered
+- [ ] Real prices, products and travel charges entered
 - [ ] Domain moved from Wix (keep the MX records so email keeps working)
 
 ## Next steps

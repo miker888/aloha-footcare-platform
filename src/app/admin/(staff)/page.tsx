@@ -183,7 +183,7 @@ function Card({ row }: { row: DispatchRow }) {
   return (
     <Link
       href={`/admin/booking/?id=${row.id}`}
-      className="block rounded-xl border border-dune bg-shell p-4 hover:border-clay focus-visible:border-clay"
+      className="block rounded-xl border border-dune bg-shell p-4 hover:border-palm focus-visible:border-palm"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
@@ -209,7 +209,7 @@ function Card({ row }: { row: DispatchRow }) {
       <p className="mt-1 text-drift">{row.services.join(", ")}</p>
       <div className="mt-3 flex flex-wrap items-center gap-2">
         {where && <Pill tone="sand">{where}</Pill>}
-        {row.nurse_name && <Pill tone="kelp">{row.nurse_name}</Pill>}
+        {row.nurse_name && <Pill tone="palm">{row.nurse_name}</Pill>}
         {row.insurance !== "none" && <Pill tone="drift">Insurance</Pill>}
         <span className="ml-auto text-[0.9rem] text-drift">{money(row.total_cents)}</span>
       </div>
@@ -224,7 +224,7 @@ function TabButton({ active, onClick, children }: { active: boolean; onClick: ()
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`rounded-md px-3 py-1.5 font-semibold ${active ? "bg-clay text-shell" : "text-ink hover:text-clay"}`}
+      className={`rounded-md px-3 py-1.5 font-semibold ${active ? "bg-palm text-shell" : "text-ink hover:text-palm"}`}
     >
       {children}
     </button>

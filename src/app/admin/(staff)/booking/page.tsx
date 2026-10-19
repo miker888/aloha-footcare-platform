@@ -71,7 +71,7 @@ function BookingScreen() {
     return (
       <div className="space-y-4">
         <Notice tone="error">This booking doesn&apos;t exist, or your account can&apos;t see it.</Notice>
-        <Link href="/admin/" className="font-semibold text-clay underline underline-offset-4">
+        <Link href="/admin/" className="font-semibold text-palm underline underline-offset-4">
           Back to dispatch
         </Link>
       </div>
@@ -82,7 +82,7 @@ function BookingScreen() {
 
   return (
     <div>
-      <Link href="/admin/" className="font-semibold text-clay underline-offset-4 hover:underline">
+      <Link href="/admin/" className="font-semibold text-palm underline-offset-4 hover:underline">
         Dispatch
       </Link>
       <div className="mt-3 flex flex-wrap items-center gap-3 border-b border-dune pb-5">
@@ -121,7 +121,7 @@ function BookingScreen() {
                   {b.visit_city} {b.visit_postal_code}
                 </span>
                 <a
-                  className="text-[0.95rem] text-clay underline underline-offset-4"
+                  className="text-[0.95rem] text-palm underline underline-offset-4"
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${b.visit_address_line1}, ${b.visit_city} ${b.visit_postal_code ?? ""}`)}`}
                   target="_blank"
                   rel="noreferrer"
@@ -163,11 +163,11 @@ function BookingScreen() {
             </table>
           </Panel>
 
-          <Panel title="Client" actions={<Link href={`/admin/client/?id=${c.id}`} className="font-semibold text-clay underline-offset-4 hover:underline">Client record</Link>}>
+          <Panel title="Client" actions={<Link href={`/admin/client/?id=${c.id}`} className="font-semibold text-palm underline-offset-4 hover:underline">Client record</Link>}>
             <dl className="grid gap-4 sm:grid-cols-2">
               <Item label="Phone">
                 {c.phone ? (
-                  <a href={`tel:${c.phone}`} className="text-clay underline underline-offset-4">
+                  <a href={`tel:${c.phone}`} className="text-palm underline underline-offset-4">
                     {c.phone}
                   </a>
                 ) : (
@@ -176,7 +176,7 @@ function BookingScreen() {
               </Item>
               <Item label="Email">
                 {c.email ? (
-                  <a href={`mailto:${c.email}`} className="break-all text-clay underline underline-offset-4">
+                  <a href={`mailto:${c.email}`} className="break-all text-palm underline underline-offset-4">
                     {c.email}
                   </a>
                 ) : (
@@ -190,7 +190,7 @@ function BookingScreen() {
                   {b.contact_phone && (
                     <>
                       ,{" "}
-                      <a href={`tel:${b.contact_phone}`} className="text-clay underline underline-offset-4">
+                      <a href={`tel:${b.contact_phone}`} className="text-palm underline underline-offset-4">
                         {b.contact_phone}
                       </a>
                     </>
@@ -198,7 +198,7 @@ function BookingScreen() {
                   {b.contact_email && (
                     <>
                       ,{" "}
-                      <a href={`mailto:${b.contact_email}`} className="break-all text-clay underline underline-offset-4">
+                      <a href={`mailto:${b.contact_email}`} className="break-all text-palm underline underline-offset-4">
                         {b.contact_email}
                       </a>
                     </>
@@ -215,7 +215,7 @@ function BookingScreen() {
                 {b.concerns.length ? (
                   <span className="flex flex-wrap gap-1.5">
                     {b.concerns.map((x) => (
-                      <Pill key={x} tone={x === "diabetic" ? "clay" : "sand"}>
+                      <Pill key={x} tone={x === "diabetic" ? "gold" : "sand"}>
                         {concernLabel(x)}
                       </Pill>
                     ))}
@@ -342,15 +342,15 @@ function DispatchPanel({ detail, onDone, onFail }: ActionProps) {
                 {nurses.map((n) => (
                   <li key={n.id}>
                     <label
-                      className={`flex cursor-pointer gap-3 rounded-lg border p-3 ${nurseId === n.id ? "border-clay bg-blush/40" : "border-dune hover:border-dune-deep"}`}
+                      className={`flex cursor-pointer gap-3 rounded-lg border p-3 ${nurseId === n.id ? "border-palm bg-leaf/60" : "border-dune hover:border-dune-deep"}`}
                     >
-                      <input type="radio" name="nurse" className="mt-1 h-5 w-5 accent-clay" checked={nurseId === n.id} onChange={() => setNurseId(n.id)} />
+                      <input type="radio" name="nurse" className="mt-1 h-5 w-5 accent-palm" checked={nurseId === n.id} onChange={() => setNurseId(n.id)} />
                       <span className="min-w-0 flex-1">
                         <span className="flex flex-wrap items-center gap-2">
                           <span className="font-semibold text-ink">
                             {n.full_name}, {n.designation}
                           </span>
-                          {n.covers_area ? <Pill tone="kelp">Covers this area</Pill> : <Pill tone="drift">Outside usual areas</Pill>}
+                          {n.covers_area ? <Pill tone="palm">Covers this area</Pill> : <Pill tone="drift">Outside usual areas</Pill>}
                         </span>
                         <span className="block text-[0.9rem] text-drift">
                           {n.visit_count === 0
@@ -385,7 +385,7 @@ function DispatchPanel({ detail, onDone, onFail }: ActionProps) {
               </Button>
             )}
             {b.status !== "confirmed" ? (
-              <Button variant="kelp" disabled={busy || !nurseId || !!clash} onClick={() => update({ ...schedule(), status: "confirmed" }, "Visit confirmed.")}>
+              <Button variant="strong" disabled={busy || !nurseId || !!clash} onClick={() => update({ ...schedule(), status: "confirmed" }, "Visit confirmed.")}>
                 {b.status === "assigned" ? "Client confirmed" : "Assign and confirm"}
               </Button>
             ) : (
@@ -397,7 +397,7 @@ function DispatchPanel({ detail, onDone, onFail }: ActionProps) {
 
           {b.status === "confirmed" && (
             <div className="flex flex-wrap gap-2 border-t border-dune pt-4">
-              <Button variant="kelp" disabled={busy} onClick={() => update({ status: "completed" }, "Marked as completed.")}>
+              <Button variant="strong" disabled={busy} onClick={() => update({ status: "completed" }, "Marked as completed.")}>
                 Mark completed
               </Button>
               <Button variant="secondary" disabled={busy} onClick={() => update({ status: "no_show" }, "Marked as a no-show.")}>

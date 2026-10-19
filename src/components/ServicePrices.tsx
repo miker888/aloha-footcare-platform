@@ -34,7 +34,7 @@ export function ServicePrices() {
   if (failed) {
     return (
       <p className="text-drift">
-        Prices are shown when you <Link href="/book/" className="text-clay underline underline-offset-4">book a visit</Link>, or call us and we&apos;ll go through them with you.
+        Prices are shown when you <Link href="/book/" className="text-palm underline underline-offset-4">book a visit</Link>, or call us and we&apos;ll go through them with you.
       </p>
     );
   }
@@ -61,7 +61,7 @@ export function ServicePrices() {
             {item.description && <p className="mt-1 max-w-[60ch] text-drift">{item.description}</p>}
           </div>
           <p className="sm:text-right">
-            <span className="font-display text-[1.6rem] text-clay">{money(item.price_cents)}</span>
+            <span className="font-display text-[1.6rem] text-palm">{money(item.price_cents)}</span>
             {item.duration_min && <span className="block text-[1rem] text-drift">about {item.duration_min} minutes</span>}
           </p>
         </li>

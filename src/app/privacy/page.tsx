@@ -74,11 +74,11 @@ export default function PrivacyPage() {
           <Section title="Questions">
             <p>
               Our privacy officer is [name and title]. Reach them at{" "}
-              <a href={`mailto:${site.email}`} className="text-clay underline underline-offset-4">
+              <a href={`mailto:${site.email}`} className="text-palm underline underline-offset-4">
                 {site.email}
               </a>{" "}
               or{" "}
-              <a href={site.phone.href} className="text-clay underline underline-offset-4">
+              <a href={site.phone.href} className="text-palm underline underline-offset-4">
                 {site.phone.display}
               </a>
               , or by mail at {site.address.join(", ")}.

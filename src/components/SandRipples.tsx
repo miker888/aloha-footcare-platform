@@ -46,7 +46,7 @@ export function SandRipples({ className = "" }: { className?: string }) {
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className={className} aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice">
       <rect width={W} height={H} fill="var(--color-dune)" />
-      <g fill="none" stroke="var(--color-clay)" strokeLinecap="round">
+      <g fill="none" stroke="var(--color-gold)" strokeLinecap="round">
         {rakes.map((r, i) => (
           <path
             key={`rake-${r}`}
@@ -54,7 +54,7 @@ export function SandRipples({ className = "" }: { className?: string }) {
             pathLength={1}
             className="ripple-line"
             strokeWidth={1.4}
-            strokeOpacity={0.28}
+            strokeOpacity={0.45}
             style={{ animationDelay: `${0.5 + i * 0.05}s` }}
           />
         ))}
@@ -65,7 +65,7 @@ export function SandRipples({ className = "" }: { className?: string }) {
             pathLength={1}
             className="ripple-line"
             strokeWidth={1.6}
-            strokeOpacity={0.5 - i * 0.04}
+            strokeOpacity={0.85 - i * 0.07}
             style={{ animationDelay: `${i * 0.09}s` }}
           />
         ))}

@@ -131,13 +131,13 @@ function VisitCard({ visit: v, onChanged, onFail }: { visit: MyVisit; onChanged:
       </div>
       <p className="mt-2">
         {v.residence_name && <span className="block font-semibold">{v.residence_name}</span>}
-        <a className="text-clay underline underline-offset-4" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} target="_blank" rel="noreferrer">
+        <a className="text-palm underline underline-offset-4" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} target="_blank" rel="noreferrer">
           {address}
         </a>
       </p>
       <p className="mt-1">
         {v.client_phone && (
-          <a href={`tel:${v.client_phone}`} className="text-clay underline underline-offset-4">
+          <a href={`tel:${v.client_phone}`} className="text-palm underline underline-offset-4">
             {v.client_phone}
           </a>
         )}
@@ -148,7 +148,7 @@ function VisitCard({ visit: v, onChanged, onFail }: { visit: MyVisit; onChanged:
             {v.contact_phone && (
               <>
                 ,{" "}
-                <a href={`tel:${v.contact_phone}`} className="text-clay underline underline-offset-4">
+                <a href={`tel:${v.contact_phone}`} className="text-palm underline underline-offset-4">
                   {v.contact_phone}
                 </a>
               </>
@@ -160,7 +160,7 @@ function VisitCard({ visit: v, onChanged, onFail }: { visit: MyVisit; onChanged:
       {v.concerns.length > 0 && (
         <div className="mt-2 flex flex-wrap gap-1.5">
           {v.concerns.map((c) => (
-            <Pill key={c} tone={c === "diabetic" ? "clay" : "sand"}>
+            <Pill key={c} tone={c === "diabetic" ? "gold" : "sand"}>
               {concernLabel(c)}
             </Pill>
           ))}
@@ -173,7 +173,7 @@ function VisitCard({ visit: v, onChanged, onFail }: { visit: MyVisit; onChanged:
       {open && (
         <div className="mt-4 border-t border-dune pt-3">
           {!closing ? (
-            <Button variant="kelp" size="sm" onClick={() => setClosing(true)}>
+            <Button variant="strong" size="sm" onClick={() => setClosing(true)}>
               Finish visit
             </Button>
           ) : (
@@ -182,7 +182,7 @@ function VisitCard({ visit: v, onChanged, onFail }: { visit: MyVisit; onChanged:
                 {(id) => <textarea id={id} rows={2} className={textareaClass} value={note} onChange={(e) => setNote(e.target.value)} />}
               </Field>
               <div className="flex flex-wrap gap-2">
-                <Button variant="kelp" size="sm" disabled={busy} onClick={() => void close("completed")}>
+                <Button variant="strong" size="sm" disabled={busy} onClick={() => void close("completed")}>
                   Mark completed
                 </Button>
                 <Button variant="secondary" size="sm" disabled={busy} onClick={() => void close("no_show")}>

@@ -61,8 +61,8 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-start justify-center bg-sand px-4 pt-[10vh]">
       <div className="w-full max-w-md">
-        <Link href="/" className="mb-8 inline-block rounded-md">
-          <Logo />
+        <Link href="/" className="mb-6 inline-block rounded-md">
+          <Logo alt="Aloha Footcare, home" className="h-28 w-auto" />
         </Link>
         <Panel title="Staff sign in">
           {!supabase ? (

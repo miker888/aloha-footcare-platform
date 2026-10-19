@@ -24,11 +24,11 @@ export default function Home() {
               <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
                 <Link
                   href="/book/"
-                  className="inline-flex h-14 items-center rounded-full bg-clay px-8 text-[1.15rem] font-semibold text-shell hover:bg-clay-deep"
+                  className="inline-flex h-14 items-center rounded-full bg-palm px-8 text-[1.15rem] font-semibold text-shell hover:bg-palm-deep"
                 >
                   Book a visit
                 </Link>
-                <a href={site.phone.href} className="text-[1.15rem] font-semibold text-ink underline decoration-dune-deep decoration-2 underline-offset-[6px] hover:decoration-clay">
+                <a href={site.phone.href} className="text-[1.15rem] font-semibold text-ink underline decoration-dune-deep decoration-2 underline-offset-[6px] hover:decoration-palm">
                   or call {site.phone.display}
                 </a>
               </div>
@@ -83,7 +83,7 @@ export default function Home() {
             <ol className="mt-10 grid gap-10 md:grid-cols-3">
               {steps.map((s, i) => (
                 <li key={s.title} className="relative">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-clay font-display text-[1.4rem] text-clay">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold font-display text-[1.4rem] text-gold-deep">
                     {i + 1}
                   </span>
                   <h3 className="mt-5 text-[1.45rem] text-ink">{s.title}</h3>
@@ -106,7 +106,7 @@ export default function Home() {
             <ServicePrices />
             <Link
               href="/book/"
-              className="mt-8 inline-flex h-14 items-center rounded-full bg-clay px-8 text-[1.15rem] font-semibold text-shell hover:bg-clay-deep"
+              className="mt-8 inline-flex h-14 items-center rounded-full bg-palm px-8 text-[1.15rem] font-semibold text-shell hover:bg-palm-deep"
             >
               Book a visit
             </Link>
@@ -129,7 +129,7 @@ export default function Home() {
         </section>
 
         {/* Residences and partners */}
-        <section id="residences" className="bg-kelp text-shell">
+        <section id="residences" className="bg-palm-deep text-shell">
           <div className="wrap grid gap-10 py-20 lg:grid-cols-[1fr_1.4fr]">
             <div>
               <h2 className="text-[2.2rem] leading-tight">Foot care for your residents</h2>
@@ -139,7 +139,7 @@ export default function Home() {
               </p>
               <a
                 href={`mailto:${site.email}?subject=Foot%20care%20for%20our%20residents`}
-                className="mt-8 inline-flex h-14 items-center rounded-full bg-shell px-8 text-[1.15rem] font-semibold text-kelp hover:bg-sand"
+                className="mt-8 inline-flex h-14 items-center rounded-full bg-shell px-8 text-[1.15rem] font-semibold text-palm-deep hover:bg-sand"
               >
                 Email us about residents
               </a>
@@ -164,7 +164,7 @@ export default function Home() {
 
 function Check() {
   return (
-    <svg viewBox="0 0 20 20" className="mt-1 h-5 w-5 shrink-0 text-kelp" aria-hidden="true">
+    <svg viewBox="0 0 20 20" className="mt-1 h-5 w-5 shrink-0 text-palm" aria-hidden="true">
       <path d="m4.5 10.5 3.5 3.5 7.5-8" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );

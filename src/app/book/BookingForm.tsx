@@ -150,7 +150,7 @@ export function BookingForm() {
     return (
       <Notice title="Online booking is coming soon">
         For now, call us at{" "}
-        <a href={site.phone.href} className="font-semibold text-clay underline underline-offset-4">
+        <a href={site.phone.href} className="font-semibold text-palm underline underline-offset-4">
           {site.phone.display}
         </a>{" "}
         and we&apos;ll book your visit over the phone.
@@ -161,7 +161,7 @@ export function BookingForm() {
     return (
       <Notice title="The booking form didn't load">
         Refresh the page to try again, or call us at{" "}
-        <a href={site.phone.href} className="font-semibold text-clay underline underline-offset-4">
+        <a href={site.phone.href} className="font-semibold text-palm underline underline-offset-4">
           {site.phone.display}
         </a>
         .
@@ -173,7 +173,7 @@ export function BookingForm() {
     return (
       <Notice title="Online booking is paused">
         {loaded.settings.booking_notice ?? "We're not taking online bookings right now."} Call us at{" "}
-        <a href={site.phone.href} className="font-semibold text-clay underline underline-offset-4">
+        <a href={site.phone.href} className="font-semibold text-palm underline underline-offset-4">
           {site.phone.display}
         </a>{" "}
         to book.
@@ -298,11 +298,11 @@ export function BookingForm() {
     <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
       <div>
         {unpaidRef && (
-          <div className="mb-8 rounded-2xl border-2 border-clay/40 bg-blush px-5 py-4 text-ink" role="status">
+          <div className="mb-8 rounded-2xl border-2 border-alert/30 bg-blush px-5 py-4 text-ink" role="status">
             <p className="font-semibold">Your payment wasn&apos;t completed, so request {unpaidRef} isn&apos;t booked.</p>
             <p className="mt-1 text-drift">
               Fill in the form again to try once more, or call us at{" "}
-              <a href={site.phone.href} className="font-semibold text-clay underline underline-offset-4">
+              <a href={site.phone.href} className="font-semibold text-palm underline underline-offset-4">
                 {site.phone.display}
               </a>
               .
@@ -390,7 +390,7 @@ export function BookingForm() {
               </Field>
               <p className="-mt-6 text-[1rem] text-drift">
                 Somewhere not on the list? Call us at{" "}
-                <a href={site.phone.href} className="text-clay underline underline-offset-4">
+                <a href={site.phone.href} className="text-palm underline underline-offset-4">
                   {site.phone.display}
                 </a>
                 .
@@ -543,11 +543,11 @@ export function BookingForm() {
                     return (
                       <label
                         key={c.value}
-                        className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 py-3 ${checked ? "border-clay bg-shell" : "border-dune bg-shell/60 hover:border-dune-deep"}`}
+                        className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 py-3 ${checked ? "border-palm bg-shell" : "border-dune bg-shell/60 hover:border-dune-deep"}`}
                       >
                         <input
                           type="checkbox"
-                          className="h-6 w-6 shrink-0 accent-clay"
+                          className="h-6 w-6 shrink-0 accent-palm"
                           checked={checked}
                           onChange={(e) =>
                             set("concerns", e.target.checked ? [...form.concerns, c.value] : form.concerns.filter((x) => x !== c.value))
@@ -645,10 +645,10 @@ export function BookingForm() {
               </p>
 
               <label className="flex cursor-pointer gap-4 rounded-2xl border-2 border-dune bg-shell p-5">
-                <input type="checkbox" className="mt-1 h-6 w-6 shrink-0 accent-clay" checked={form.consent} onChange={(e) => set("consent", e.target.checked)} />
+                <input type="checkbox" className="mt-1 h-6 w-6 shrink-0 accent-palm" checked={form.consent} onChange={(e) => set("consent", e.target.checked)} />
                 <span>
                   I&apos;ve read{" "}
-                  <Link href="/privacy/" target="_blank" className="text-clay underline underline-offset-4">
+                  <Link href="/privacy/" target="_blank" className="text-palm underline underline-offset-4">
                     how Aloha Footcare collects and uses health information
                   </Link>{" "}
                   and agree to share these details to arrange my visit.
@@ -668,7 +668,7 @@ export function BookingForm() {
               </button>
             )}
             {step > 0 && (
-              <button type="button" onClick={back} className="h-14 rounded-full px-6 text-[1.1rem] font-semibold text-ink underline underline-offset-4 hover:text-clay">
+              <button type="button" onClick={back} className="h-14 rounded-full px-6 text-[1.1rem] font-semibold text-ink underline underline-offset-4 hover:text-palm">
                 Back
               </button>
             )}
@@ -679,7 +679,7 @@ export function BookingForm() {
         </form>
       </div>
 
-      <aside className="lg:sticky lg:top-28 lg:self-start" aria-label="Your visit so far">
+      <aside className="lg:sticky lg:top-32 lg:self-start" aria-label="Your visit so far">
         <div className="rounded-2xl border border-dune bg-shell p-6">
           <h2 className="text-[1.35rem] text-ink">Your visit</h2>
           {!service ? (
@@ -712,7 +712,7 @@ export function BookingForm() {
           )}
           <p className="mt-5 border-t border-dune pt-4 text-[1rem] text-drift">
             Questions? Call{" "}
-            <a href={site.phone.href} className="font-semibold text-clay underline underline-offset-4">
+            <a href={site.phone.href} className="font-semibold text-palm underline underline-offset-4">
               {site.phone.display}
             </a>
           </p>
@@ -723,9 +723,9 @@ export function BookingForm() {
 }
 
 const inputClass =
-  "block h-14 w-full rounded-xl border-2 border-dune-deep bg-shell px-4 text-[1.15rem] text-ink placeholder:text-drift/70 focus:border-clay focus:outline-none";
+  "block h-14 w-full rounded-xl border-2 border-dune-deep bg-shell px-4 text-[1.15rem] text-ink placeholder:text-drift/70 focus:border-palm focus:outline-none";
 const primaryButton =
-  "inline-flex h-14 items-center rounded-full bg-clay px-8 text-[1.15rem] font-semibold text-shell hover:bg-clay-deep";
+  "inline-flex h-14 items-center rounded-full bg-palm px-8 text-[1.15rem] font-semibold text-shell hover:bg-palm-deep";
 
 function Field({
   label,
@@ -767,12 +767,12 @@ function RadioCard({
 }) {
   return (
     <label
-      className={`flex cursor-pointer gap-4 rounded-2xl border-2 p-4 sm:p-5 ${checked ? "border-clay bg-shell" : "border-dune bg-shell/60 hover:border-dune-deep"}`}
+      className={`flex cursor-pointer gap-4 rounded-2xl border-2 p-4 sm:p-5 ${checked ? "border-palm bg-shell" : "border-dune bg-shell/60 hover:border-dune-deep"}`}
     >
-      <input type="radio" name={name} checked={checked} onChange={onChange} className="mt-1 h-6 w-6 shrink-0 accent-clay" />
+      <input type="radio" name={name} checked={checked} onChange={onChange} className="mt-1 h-6 w-6 shrink-0 accent-palm" />
       <span>
         <span className="block text-[1.15rem] font-semibold text-ink">{title}</span>
-        {meta && <span className="block text-clay">{meta}</span>}
+        {meta && <span className="block text-palm">{meta}</span>}
         {text && <span className="mt-1 block text-drift">{text}</span>}
       </span>
     </label>
@@ -788,7 +788,7 @@ function Progress({ step }: { step: number }) {
       <ol className="mt-3 grid grid-cols-4 gap-2" aria-label="Booking steps">
         {STEPS.map((s, i) => (
           <li key={s} aria-current={i === step ? "step" : undefined}>
-            <span className={`block h-2 rounded-full ${i <= step ? "bg-clay" : "bg-dune"}`} />
+            <span className={`block h-2 rounded-full ${i <= step ? "bg-palm" : "bg-dune"}`} />
             <span className={`mt-2 hidden text-[0.95rem] sm:block ${i === step ? "font-semibold text-ink" : "text-drift"}`}>{s}</span>
           </li>
         ))}

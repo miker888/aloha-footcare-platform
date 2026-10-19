@@ -120,7 +120,7 @@ function Nurses() {
               {nurses.map((n) => {
                 const nurseAreas = links.filter((l) => l.nurse_id === n.id).map((l) => areaName(l.area_id));
                 return (
-                  <li key={n.id} className={`rounded-xl border bg-shell p-4 ${draft?.id === n.id ? "border-clay" : "border-dune"}`}>
+                  <li key={n.id} className={`rounded-xl border bg-shell p-4 ${draft?.id === n.id ? "border-palm" : "border-dune"}`}>
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <p className="text-[1.1rem] font-bold">

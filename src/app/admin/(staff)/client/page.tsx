@@ -104,7 +104,7 @@ function ClientScreen() {
 
   return (
     <div>
-      <Link href="/admin/clients/" className="font-semibold text-clay underline-offset-4 hover:underline">
+      <Link href="/admin/clients/" className="font-semibold text-palm underline-offset-4 hover:underline">
         Clients
       </Link>
       <div className="mt-3">
@@ -169,7 +169,7 @@ function ClientScreen() {
             <ul className="divide-y divide-dune">
               {detail.bookings.map((b) => (
                 <li key={b.id} className="py-3">
-                  <Link href={`/admin/booking/?id=${b.id}`} className="font-semibold text-clay underline-offset-4 hover:underline">
+                  <Link href={`/admin/booking/?id=${b.id}`} className="font-semibold text-palm underline-offset-4 hover:underline">
                     {b.scheduled_start ? dateTime(b.scheduled_start) : `Asked for ${shortDate(b.preferred_date)}`}
                   </Link>
                   <p className="text-drift">

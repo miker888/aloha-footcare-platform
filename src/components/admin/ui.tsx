@@ -8,23 +8,23 @@ import type { BookingStatus, PaymentStatus } from "@/lib/types";
 // Small set of building blocks for the staff screens.
 
 const inputBase =
-  "block h-11 rounded-lg border border-dune-deep bg-shell px-3 text-[1rem] text-ink placeholder:text-drift/70 focus:border-clay focus:outline-none focus:ring-2 focus:ring-clay/25 disabled:opacity-60";
+  "block h-11 rounded-lg border border-dune-deep bg-shell px-3 text-[1rem] text-ink placeholder:text-drift/70 focus:border-palm focus:outline-none focus:ring-2 focus:ring-palm/25 disabled:opacity-60";
 export const inputClass = `${inputBase} w-full`;
 /** For selects and inputs that sit inline in a toolbar. */
 export const inlineInputClass = inputBase;
 export const textareaClass =
-  "block w-full rounded-lg border border-dune-deep bg-shell px-3 py-2.5 text-[1rem] text-ink placeholder:text-drift/70 focus:border-clay focus:outline-none focus:ring-2 focus:ring-clay/25";
+  "block w-full rounded-lg border border-dune-deep bg-shell px-3 py-2.5 text-[1rem] text-ink placeholder:text-drift/70 focus:border-palm focus:outline-none focus:ring-2 focus:ring-palm/25";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary" | "quiet" | "danger" | "kelp";
+  variant?: "primary" | "secondary" | "quiet" | "danger" | "strong";
   size?: "md" | "sm";
 };
 
 const variants = {
-  primary: "bg-clay text-shell hover:bg-clay-deep",
-  kelp: "bg-kelp text-shell hover:bg-[#244839]",
-  secondary: "border border-dune-deep bg-shell text-ink hover:border-clay hover:text-clay",
-  quiet: "text-ink underline-offset-4 hover:text-clay hover:underline",
+  primary: "bg-palm text-shell hover:bg-palm-deep",
+  strong: "bg-palm-deep text-shell hover:bg-[#0d3312]",
+  secondary: "border border-dune-deep bg-shell text-ink hover:border-palm hover:text-palm",
+  quiet: "text-ink underline-offset-4 hover:text-palm hover:underline",
   danger: "border border-alert/40 bg-shell text-alert hover:bg-blush",
 };
 
@@ -95,7 +95,7 @@ export function Check({
 }) {
   return (
     <label className="flex cursor-pointer items-start gap-2.5">
-      <input type="checkbox" className="mt-0.5 h-5 w-5 shrink-0 accent-clay" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+      <input type="checkbox" className="mt-0.5 h-5 w-5 shrink-0 accent-palm" checked={checked} onChange={(e) => onChange(e.target.checked)} />
       <span>
         <span className="block text-ink">{label}</span>
         {hint && <span className="block text-[0.9rem] text-drift">{hint}</span>}
@@ -148,10 +148,10 @@ export function Panel({
   );
 }
 
-type Tone = "clay" | "kelp" | "drift" | "alert" | "sand";
+type Tone = "gold" | "palm" | "drift" | "alert" | "sand";
 const tones: Record<Tone, string> = {
-  clay: "bg-blush text-clay-deep",
-  kelp: "bg-sea text-kelp",
+  gold: "bg-gold-wash text-gold-deep",
+  palm: "bg-leaf text-palm-deep",
   drift: "bg-dune/70 text-drift",
   alert: "bg-blush text-alert",
   sand: "bg-sand text-ink border border-dune",
@@ -167,9 +167,9 @@ export function Pill({ tone = "drift", children }: { tone?: Tone; children: Reac
 
 const statusTone: Record<BookingStatus, Tone> = {
   awaiting_payment: "alert",
-  new: "clay",
+  new: "gold",
   assigned: "sand",
-  confirmed: "kelp",
+  confirmed: "palm",
   completed: "drift",
   cancelled: "drift",
   no_show: "alert",
@@ -181,9 +181,9 @@ export function StatusPill({ status }: { status: BookingStatus }) {
 
 const paymentTone: Record<PaymentStatus, Tone> = {
   unpaid: "alert",
-  partially_paid: "clay",
-  paid: "kelp",
-  partially_refunded: "clay",
+  partially_paid: "gold",
+  paid: "palm",
+  partially_refunded: "gold",
   refunded: "drift",
   not_required: "drift",
 };
@@ -196,7 +196,7 @@ export function Notice({ tone = "info", children }: { tone?: "info" | "error" | 
   const styles = {
     info: "border-dune bg-sand text-ink",
     error: "border-alert/30 bg-blush text-alert",
-    success: "border-kelp/30 bg-sea text-kelp",
+    success: "border-palm/30 bg-leaf text-palm-deep",
   }[tone];
   return (
     <div role={tone === "error" ? "alert" : "status"} className={`rounded-lg border px-4 py-3 font-semibold ${styles}`}>

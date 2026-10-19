@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="border-t border-dune bg-shell">
       <div className="wrap grid gap-10 py-14 md:grid-cols-[1.2fr_1fr_1fr]">
         <div>
-          <Logo />
+          <Logo alt={site.name} className="h-28 w-auto" />
           <p className="mt-4 max-w-sm text-drift">{site.tagline}</p>
           <p className="mt-4 text-[1rem] text-drift">Proudly Canadian owned and operated.</p>
         </div>
@@ -16,7 +16,7 @@ export function SiteFooter() {
           <h2 className="text-xl text-ink">Contact</h2>
           <ul className="mt-3 space-y-1.5">
             <li>
-              <a href={site.phone.href} className="font-semibold text-clay underline-offset-4 hover:underline">
+              <a href={site.phone.href} className="font-semibold text-palm underline-offset-4 hover:underline">
                 {site.phone.display}
               </a>
             </li>

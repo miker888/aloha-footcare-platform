@@ -1,19 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Beach palette: dry sand ground, shell surfaces, clay for action, kelp for
-     "all set". Every text colour here passes WCAG AA on sand and shell. */
+  /* From the logo: palm green for actions, trunk gold for accents, on dry
+     sand. Every text colour here passes WCAG AA on sand and shell. Plain gold
+     (#9f8a4b) is for lines and decoration only; use gold-deep for gold text. */
   --color-sand: #f5eddf;
   --color-shell: #fbf7f0;
   --color-dune: #e7d7bf;
   --color-dune-deep: #d9c4a5;
-  --color-clay: #9a4426;
-  --color-clay-deep: #7c3419;
+  --color-palm: #1b5e1f;
+  --color-palm-deep: #13451a;
+  --color-leaf: #e1ebd9;
+  --color-gold: #9f8a4b;
+  --color-gold-deep: #6b5824;
+  --color-gold-wash: #efe6cc;
   --color-blush: #f4ddd0;
   --color-ink: #2b221d;
   --color-drift: #5e5047;
-  --color-kelp: #2f5a4a;
-  --color-sea: #dce7df;
   --color-alert: #8f2a1d;
 
   --font-display: var(--font-young-serif), Georgia, "Times New Roman", serif;
@@ -30,7 +33,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: 8rem;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -66,13 +69,13 @@ p {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-clay);
+  outline: 3px solid var(--color-palm);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 ::selection {
-  background: var(--color-blush);
+  background: var(--color-leaf);
 }
 
 /* The one moment of motion: the sand ripples draw in once on load. */

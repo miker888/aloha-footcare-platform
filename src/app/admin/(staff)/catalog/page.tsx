@@ -164,7 +164,7 @@ function Catalog() {
                       <td className="px-4 py-2.5">{money(i.price_cents)}</td>
                       <td className="px-4 py-2.5">{i.duration_min ?? ""}</td>
                       <td className="px-4 py-2.5">
-                        {!i.active ? <Pill tone="drift">Hidden</Pill> : i.bookable_online ? <Pill tone="kelp">Online</Pill> : <Pill tone="sand">Staff only</Pill>}
+                        {!i.active ? <Pill tone="drift">Hidden</Pill> : i.bookable_online ? <Pill tone="palm">Online</Pill> : <Pill tone="sand">Staff only</Pill>}
                       </td>
                       <td className="px-4 py-2.5 text-right">
                         <Button variant="secondary" size="sm" onClick={() => edit(i)}>

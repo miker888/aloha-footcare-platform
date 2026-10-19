@@ -175,7 +175,7 @@ function NewBooking() {
                     key={m}
                     type="button"
                     onClick={() => setClientMode(m)}
-                    className={`rounded-md px-2.5 py-1 text-[0.9rem] font-semibold ${clientMode === m ? "bg-clay text-shell" : "text-ink"}`}
+                    className={`rounded-md px-2.5 py-1 text-[0.9rem] font-semibold ${clientMode === m ? "bg-palm text-shell" : "text-ink"}`}
                   >
                     {m === "existing" ? "Existing client" : "New client"}
                   </button>
@@ -234,10 +234,10 @@ function NewBooking() {
           <Panel title="Services and products">
             <div className="grid gap-2 sm:grid-cols-2">
               {[...services, ...others].map((item) => (
-                <label key={item.id} className={`flex items-center gap-3 rounded-lg border p-3 ${qty[item.id] ? "border-clay bg-blush/40" : "border-dune"}`}>
+                <label key={item.id} className={`flex items-center gap-3 rounded-lg border p-3 ${qty[item.id] ? "border-palm bg-leaf/60" : "border-dune"}`}>
                   <input
                     type="checkbox"
-                    className="h-5 w-5 accent-clay"
+                    className="h-5 w-5 accent-palm"
                     checked={!!qty[item.id]}
                     onChange={(e) => setQty({ ...qty, [item.id]: e.target.checked ? 1 : 0 })}
                   />
