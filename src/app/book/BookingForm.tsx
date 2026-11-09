@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { errorMessage, FUNCTION_REGION, supabase } from "@/lib/supabase";
+import { errorMessage, FUNCTION_REGION, isDemo, supabase } from "@/lib/supabase";
 import { addDays, longDate, money, todayISO } from "@/lib/format";
 import { CONCERNS, INSURANCE, WINDOWS, concernLabel, insuranceLabel, windowLabel } from "@/lib/labels";
 import { site } from "@/lib/site";
@@ -664,7 +664,7 @@ export function BookingForm() {
               </button>
             ) : (
               <button type="submit" disabled={submitting} className={`${primaryButton} disabled:opacity-60`}>
-                {submitting ? "Opening secure payment…" : `Pay ${money(total)} and send request`}
+                {submitting ? (isDemo ? "Sending your request…" : "Opening secure payment…") : `Pay ${money(total)} and send request`}
               </button>
             )}
             {step > 0 && (
@@ -673,9 +673,14 @@ export function BookingForm() {
               </button>
             )}
           </div>
-          {step === 3 && (
-            <p className="mt-4 text-[1rem] text-drift">Card payment is handled securely by Stripe. We never see your full card number.</p>
-          )}
+          {step === 3 &&
+            (isDemo ? (
+              <p className="mt-4 text-[1rem] text-drift">
+                Prototype: the payment is simulated. In the live site this button opens Stripe&apos;s secure card page.
+              </p>
+            ) : (
+              <p className="mt-4 text-[1rem] text-drift">Card payment is handled securely by Stripe. We never see your full card number.</p>
+            ))}
         </form>
       </div>
 

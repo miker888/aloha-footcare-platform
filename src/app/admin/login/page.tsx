@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { useCallback, useEffect, useState } from "react";
+import { DEMO_PASSWORD, DEMO_STAFF } from "@/lib/demo/flag";
+import { isDemo, supabase } from "@/lib/supabase";
 import { absoluteUrl } from "@/lib/url";
 import { Logo } from "@/components/Logo";
 import { MfaChallenge } from "@/components/admin/MfaChallenge";
@@ -17,9 +18,10 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  // Already signed in: go straight in.
+  // Already signed in: go straight in. (Not in the prototype, where this page
+  // is also how you switch between the office and nurse views.)
   useEffect(() => {
-    if (!supabase) return;
+    if (!supabase || isDemo) return;
     supabase.auth.getSession().then(({ data }) => {
       if (data.session) router.replace("/admin/");
     });
@@ -65,7 +67,9 @@ export default function LoginPage() {
           <Logo alt="Aloha Footcare, home" className="h-28 w-auto" />
         </Link>
         <Panel title="Staff sign in">
-          {!supabase ? (
+          {isDemo ? (
+            <DemoSignIn />
+          ) : !supabase ? (
             <p className="text-drift">This copy of the site isn&apos;t connected to a database yet.</p>
           ) : stage === "code" ? (
             <MfaChallenge onDone={() => router.replace("/admin/")} />
@@ -115,6 +119,72 @@ export default function LoginPage() {
           For Aloha Footcare staff. Client records are private health information; every record you open is logged.
         </p>
       </div>
+    </div>
+  );
+}
+
+type Who = keyof typeof DEMO_STAFF;
+
+/** Prototype only: sign in as one of the two sample staff accounts. */
+function DemoSignIn() {
+  const router = useRouter();
+  const [busy, setBusy] = useState<Who | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const signInAs = useCallback(
+    async (who: Who) => {
+      if (!supabase) return;
+      setBusy(who);
+      setError(null);
+      await supabase.auth.signOut({ scope: "local" });
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: DEMO_STAFF[who].email,
+        password: DEMO_PASSWORD,
+      });
+      if (signInError) {
+        setBusy(null);
+        setError("The prototype couldn't sign you in. Reload the page and try again.");
+        return;
+      }
+      router.replace(who === "nurse" ? "/admin/visits/" : "/admin/");
+    },
+    [router],
+  );
+
+  // Links from the guided tour: /admin/login/?as=office or ?as=nurse
+  useEffect(() => {
+    const as = new URLSearchParams(window.location.search).get("as");
+    if (as !== "office" && as !== "nurse") return;
+    const timer = setTimeout(() => void signInAs(as), 0);
+    return () => clearTimeout(timer);
+  }, [signInAs]);
+
+  const choices: { who: Who; detail: string }[] = [
+    { who: "office", detail: "Dispatch queue, bookings, clients, nurses, prices, payments and settings." },
+    { who: "nurse", detail: "Only her own visits, with the notes she needs at the door." },
+  ];
+
+  return (
+    <div className="space-y-4">
+      {error && <Notice tone="error">{error}</Notice>}
+      <p className="text-drift">Choose who to be. In the live system each person signs in with their own email and password.</p>
+      <ul className="space-y-3">
+        {choices.map(({ who, detail }) => (
+          <li key={who}>
+            <button
+              type="button"
+              onClick={() => signInAs(who)}
+              disabled={busy !== null}
+              className="w-full rounded-xl border-2 border-dune bg-shell px-4 py-3 text-left hover:border-palm disabled:opacity-60"
+            >
+              <span className="block font-semibold text-palm">
+                {busy === who ? "Signing in…" : DEMO_STAFF[who].label}
+              </span>
+              <span className="block text-[0.95rem] text-drift">{detail}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

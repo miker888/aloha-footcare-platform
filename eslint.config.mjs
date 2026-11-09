@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Deno code, checked with `deno check` instead.
     "supabase/functions/**",
+    // Prototype build output (PGlite and SQL copied by demo/prepare.mjs).
+    "public/demo-db/**",
   ]),
 ]);
 

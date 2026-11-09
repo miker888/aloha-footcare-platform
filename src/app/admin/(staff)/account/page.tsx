@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { isDemo, supabase } from "@/lib/supabase";
 import { useStaff } from "@/components/admin/AdminShell";
 import { Button, Field, inputClass, Loading, Notice, PageHeader, Panel } from "@/components/admin/ui";
 
@@ -24,8 +24,20 @@ function Account() {
       <PageHeader title="Your account">{staff.email}</PageHeader>
       <div className="mt-6 space-y-6">
         {reset && <Notice tone="info">Choose a new password to finish signing in.</Notice>}
-        <Password />
-        <TwoStep />
+        {isDemo ? (
+          <Panel title="Password and two-step sign-in">
+            <p className="text-drift">
+              Not in the prototype. In the live system each person sets their own password here, and can turn on
+              two-step sign-in: they scan a code with an authenticator app on their phone, then enter a six-digit code
+              each time they sign in. The office can make it required for everyone in Settings.
+            </p>
+          </Panel>
+        ) : (
+          <>
+            <Password />
+            <TwoStep />
+          </>
+        )}
       </div>
     </div>
   );

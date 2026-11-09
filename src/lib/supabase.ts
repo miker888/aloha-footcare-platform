@@ -1,16 +1,24 @@
 import { createClient, FunctionRegion, type SupabaseClient } from "@supabase/supabase-js";
+import { DEMO_KEY, DEMO_URL, isDemo } from "./demo/flag";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
-// Null until the project's URL and publishable key are set, so the site still
+export { isDemo };
+
+const auth = { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true };
+
+// Prototype: requests are answered in the browser. Loaded only when first used.
+const demoFetch: typeof fetch = async (input, init) => (await import("./demo/api")).demoFetch(input, init);
+
+// In the prototype build, requests are answered in the browser (src/lib/demo/).
+// Otherwise null until the project's URL and publishable key are set, so the site still
 // builds and the public pages still render before Supabase is connected.
 // Both values are public by design; Row Level Security protects the data.
-export const supabase: SupabaseClient | null =
-  url && key
-    ? createClient(url, key, {
-        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
-      })
+export const supabase: SupabaseClient | null = isDemo
+  ? createClient(DEMO_URL, DEMO_KEY, { auth, global: { fetch: demoFetch } })
+  : url && key
+    ? createClient(url, key, { auth })
     : null;
 
 export const isConnected = supabase !== null;

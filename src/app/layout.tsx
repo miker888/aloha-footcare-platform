@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { DemoBanner } from "@/components/DemoBanner";
+import { isDemo } from "@/lib/demo/flag";
 import { site } from "@/lib/site";
 import { siteUrl } from "@/lib/url";
 
@@ -37,7 +39,8 @@ export const metadata: Metadata = {
     locale: "en_CA",
     type: "website",
   },
-  robots: { index: true, follow: true },
+  // The prototype must never show up in search results in place of the real site.
+  robots: isDemo ? { index: false, follow: false } : { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
@@ -48,7 +51,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     // Font variables sit on <html> so the theme tokens on :root can use them.
     <html lang="en-CA" className={`${youngSerif.variable} ${atkinson.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {isDemo && <DemoBanner />}
+        {children}
+      </body>
     </html>
   );
 }

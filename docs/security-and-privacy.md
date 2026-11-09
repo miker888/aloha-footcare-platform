@@ -77,6 +77,12 @@ period still needs to be set (see the privacy notice placeholder).
 To be written into the clinic's privacy policy: who decides, notifying the OIPC, the Minister and affected
 individuals as the HIA requires. The audit log supports working out what was accessed.
 
+## The public prototype
+
+The GitHub Pages preview is a prototype built for demonstrations. It runs entirely in the visitor's browser with
+fictional data: there is no server, no connection to Supabase or Stripe, and whatever is typed into it stays in
+that browser. It is excluded from search engines. Real client details must never be entered into it.
+
 ## Still to decide
 
 1. Retention period for client and booking records.

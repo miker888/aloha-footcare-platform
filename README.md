@@ -22,6 +22,9 @@ What it does today:
 - **Staff**: admin and nurse roles, optional two-step sign-in (required for everyone with one switch), and
   a nurse view listing only their own visits.
 
+There is also a **clickable prototype** of all of the above that needs no accounts or setup; see
+[The prototype](#the-prototype).
+
 Not in this version: clinical charting, email/SMS reminders, Vagaro data import, route optimisation. See
 [Next steps](#next-steps).
 
@@ -49,6 +52,31 @@ Not in this version: clinical charting, email/SMS reminders, Vagaro data import,
 
 See [docs/security-and-privacy.md](docs/security-and-privacy.md) for the controls, written to feed the
 Privacy Impact Assessment.
+
+## The prototype
+
+`https://miker888.github.io/aloha-footcare-platform/` (start at `/tour/`)
+
+The GitHub Pages preview is built with `NEXT_PUBLIC_DEMO_MODE=true`. It is the same app, but the database runs
+inside the visitor's browser instead of in Supabase:
+
+- [PGlite](https://pglite.dev) (Postgres compiled to WebAssembly) loads the real migration, the demo seed and two
+  staff accounts ([`demo/staff.sql`](demo/staff.sql)), so the same security rules and booking functions answer
+  every request. [`src/lib/demo/api.ts`](src/lib/demo/api.ts) stands in for Supabase's API and the two Edge
+  Functions (in demo payment mode), running each request as the database role it would have in Supabase.
+- Data is kept in the browser's IndexedDB, so bookings survive page loads and are shared between open tabs. Nothing
+  leaves the device. **Start over** in the green bar reloads the sample data.
+- The bar also links to the guided tour and to a staff sign-in page with one-click **Office manager** and
+  **Nurse** buttons.
+- Not in the prototype: passwords and two-step sign-in codes, real card payments, emails.
+- First visit downloads about 16 MB (Postgres); after that it loads from the browser cache in a couple of seconds.
+- The prototype is kept out of search engines (noindex, robots.txt) so it can't be mistaken for the real site.
+
+Run it locally with `npm run dev:demo`. [`demo/prepare.mjs`](demo/prepare.mjs) runs before every build and
+copies PGlite and the SQL into `public/demo-db/` only when demo mode is on; a normal build ships none of it.
+
+When the clinic's Supabase project is connected, set `NEXT_PUBLIC_DEMO_MODE` to `"false"` in
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
 
 ## Setting it up
 
@@ -103,7 +131,8 @@ design) and push to `main`. The workflow runs the checks, builds, and deploys to
 (Settings → Pages → Source: GitHub Actions). GitHub Pages needs a public repo on a free account, or GitHub Pro
 for a private one.
 
-Preview: `https://miker888.github.io/aloha-footcare-platform/`. Staff sign in at `/admin/`.
+Preview: `https://miker888.github.io/aloha-footcare-platform/` (the prototype until demo mode is turned off).
+Staff sign in at `/admin/`.
 
 ## Working on it
 
@@ -138,6 +167,8 @@ to `supabase/tests/security_and_booking.sql`, and keep `src/lib/types.ts` in ste
 | `supabase/migrations/` | Tables, security rules, booking functions |
 | `supabase/functions/` | create-booking, stripe-webhook, refund-payment |
 | `supabase/tests/` | Database tests |
+| `demo/`, `src/lib/demo/` | The prototype's in-browser database and its stand-in for Supabase |
+| `src/app/tour/` | The prototype's guided tour (only in demo builds) |
 
 ## Before real client data goes in
 
